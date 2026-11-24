@@ -319,7 +319,9 @@ For example, a PostgreSQL server that can't connect because `DATABASE_URL` is no
 
 You can also open the `/mcp` manager while the agent is working to toggle servers on or off mid-turn. Add, edit, delete, and re-auth actions wait until the turn finishes, but enabling or disabling a server takes effect immediately.
 
-**Toggling servers on and off**: From the `/mcp` list view, you can **enable or disable individual MCP servers** without editing your config file. Select a server in the list and toggle it — disabled servers won't start in future sessions and their tools won't be available to agents. This is useful for temporarily disabling a server that's causing slowdowns or errors without removing it from your configuration entirely.
+**Toggling servers on and off**: From the `/mcp` list view, you can **enable or disable individual MCP servers** without editing your config file. Select a server in the list and toggle it — disabled servers won't start in future sessions and their tools won't be available to agents. The disabled state is saved across sessions, so this is useful for switching off a server that's causing slowdowns or errors without removing it from your configuration entirely.
+
+**Inspecting and removing servers**: Use `/mcp get <name>` (or `copilot mcp get <name>`) to inspect one server's configuration, and `/mcp remove <name>` (or `copilot mcp remove <name>`) to delete it. Removing a server also clears its saved enabled/disabled state, and it doesn't restart your other connected servers. Servers passed with `--additional-mcp-config` and built-in servers can't be removed this way; disable built-in servers instead.
 
 **Common causes and fixes**:
 
@@ -369,6 +371,10 @@ A: There's no hard limit, but each server is a running process. Configure only t
 **Q: I'm using an Azure DevOps repository. Will the GitHub MCP server interfere?**
 
 A: No. Copilot CLI automatically detects Azure DevOps repositories and disables the built-in GitHub MCP server for those sessions. This prevents irrelevant GitHub API calls when your project is hosted on Azure DevOps. Other MCP servers you have configured are unaffected.
+
+## Compatibility and Migration Notes
+
+- The older `/mcp info` and `/mcp delete` verbs have been retired in favor of `/mcp get` and `/mcp remove`.
 
 ## Next Steps
 

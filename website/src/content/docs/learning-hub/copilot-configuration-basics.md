@@ -941,6 +941,14 @@ Run `/config` to open a dedicated sidebar configuration screen inside the CLI, g
 
 `/sandbox` can keep sandboxing enabled for the current session only, without changing your global setting. Sandboxed commands can use `HTTPS_PROXY` and `HTTP_PROXY` for host-rule traffic when no sandbox proxy is configured, and sandboxed git on github.com can use a `GITHUB_TOKEN` supplied through `credentials.envVars`. When sandboxed commands inherit your host proxy settings, `NO_PROXY` and `ALL_PROXY` are honored too.
 
+### Sandbox Policy Details
+
+`/sandbox policy` shows the GitHub account that sandboxed `gh` commands use. On Windows, sandbox package queries are enabled by default; set `sandbox.userPolicy.capabilities` to `[]` to opt out. On macOS, `sandbox.userPolicy.seatbelt.extraMachLookups` allows specific Mach service lookups in sandboxed commands without enabling Keychain access.
+
+### Timeline Timestamps
+
+Turn on the `showTimelineTimestamps` setting to show start times, end times, and elapsed durations on timeline items — handy for spotting slow tool calls in long sessions.
+
 ### Assisted Permissions Guidance
 
 Assisted Permissions are available without enabling experimental mode. In Assisted permission mode, the `assistedApprovalInstructions` setting lets you supply your own guidance to the permission judge, so confirmation decisions reflect your team's norms (for example, which commands are always safe to run).

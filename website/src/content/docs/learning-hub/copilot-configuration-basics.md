@@ -945,6 +945,10 @@ Run `/config` to open a dedicated sidebar configuration screen inside the CLI, g
 
 Assisted Permissions are available without enabling experimental mode. In Assisted permission mode, the `assistedApprovalInstructions` setting lets you supply your own guidance to the permission judge, so confirmation decisions reflect your team's norms (for example, which commands are always safe to run).
 
+### Environment Variables for Every Process
+
+The `env` setting defines environment variables that Copilot CLI passes to every process it starts: shell commands, local LSP and MCP servers, hooks, and extensions. It works with or without the sandbox, so use it for values such as proxy settings or tool flags that all of those processes should share.
+
 ### Memory and Session Import
 
 Session and memory import commands accept the semantic JSONL interchange format, making it possible to bring saved session history or memory entries into Copilot CLI from an external export rather than starting from scratch.

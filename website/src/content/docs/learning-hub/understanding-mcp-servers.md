@@ -292,6 +292,8 @@ MCP server SDKs are available in [Python](https://github.com/modelcontextprotoco
 
 ## Troubleshooting MCP Connection Issues
 
+If a plugin and a standalone MCP server connect to the same endpoint, Copilot CLI warns you and shows how to disable one of them in `/mcp`. At startup it also summarizes MCP server status when something needs attention, and `/mcp auth <name>` handles initial sign-in.
+
 When an MCP server fails to start or loses its connection, Copilot CLI surfaces a warning with actionable details to help you diagnose the problem quickly.
 
 **Failure warnings include stderr output**: If your MCP server prints error messages to stderr (e.g., missing environment variables, connection refused, import errors), those messages are included directly in the CLI warning. This means you usually see the root cause without needing to run the server manually.

@@ -254,6 +254,8 @@ tools: ['codebase', 'terminal', 'postgres-mcp']
 
 The agent can then query your database, analyze query plans, and suggest optimizations—all within the conversation. For setup details, see [Understanding MCP Servers](../understanding-mcp-servers/).
 
+In Copilot CLI, custom agents can opt in to specific tools through explicit tool exposure, and subagents respect the tool list in their agent file even when the file has no prompt body. List only the tools an agent needs.
+
 ## Best Practices
 
 ### Writing Effective Agent Personas

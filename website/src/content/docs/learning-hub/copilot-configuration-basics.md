@@ -945,6 +945,22 @@ Run `/config` to open a dedicated sidebar configuration screen inside the CLI, g
 
 Assisted Permissions are available without enabling experimental mode. In Assisted permission mode, the `assistedApprovalInstructions` setting lets you supply your own guidance to the permission judge, so confirmation decisions reflect your team's norms (for example, which commands are always safe to run).
 
+### Environment Variables for Every Process
+
+The `env` setting defines environment variables that Copilot sets for every process it starts: shell commands, local LSP and MCP servers, hooks, and extensions. It works with or without the sandbox. Sandboxed macOS commands can also be granted specific Mach service lookups through `sandbox.userPolicy.seatbelt.extraMachLookups` without enabling Keychain access, and `/sandbox policy` shows which GitHub account sandboxed `gh` commands use.
+
+### Timeline Timestamps
+
+Set `showTimelineTimestamps` to display start times, end times, and elapsed durations on timeline items. In the fullscreen timeline, click **Jump to latest** to return to the newest output and resume following it.
+
+### Duplicate MCP Endpoint Warnings
+
+When a plugin and a standalone MCP server connect to the same endpoint, Copilot CLI warns you and shows how to disable one of them in `/mcp`, so the same tools are not loaded twice.
+
+### Custom Provider Models in `/model`
+
+Manage configured provider models directly from `/model`. Press **Ctrl+X** then **A** to add a custom provider model and optionally switch to it in local sessions.
+
 ### Memory and Session Import
 
 Session and memory import commands accept the semantic JSONL interchange format, making it possible to bring saved session history or memory entries into Copilot CLI from an external export rather than starting from scratch.
@@ -967,6 +983,8 @@ This section collects settings and behaviors that **changed or were renamed** in
 - **Auto allow-all mode requires experimental mode.** The previous `AUTO_APPROVAL` environment variable approach was removed in favor of `/experimental on` (or `--experimental`) plus `/allow-all auto`.
 - **Ctrl+D no longer queues messages.** It now uses its default terminal behavior; use **Ctrl+Q** or **Ctrl+Enter** to queue a message instead.
 - **The CLI's command-line parser was rewritten** (moving off Commander to a Rust-based grammar). As a result, some error and help wording changed, `copilot login --host` now works correctly, and `--max-autopilot-continues` no longer accepts scientific notation as a value.
+- **Windows sandbox package queries are on by default.** Set `sandbox.userPolicy.capabilities` to `[]` to opt out.
+- **Plan approval no longer offers to continue in Autopilot with `/fleet`.** Choose the mode explicitly after approving a plan.
 - **Model availability changes over time.** The model picker periodically retires older models; if a model you previously pinned in a custom agent or config disappears from `/model`, switch to a current model or a [family alias](#model-picker) instead.
 
 ## Common Questions
